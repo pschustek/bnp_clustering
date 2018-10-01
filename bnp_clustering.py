@@ -6,7 +6,7 @@ This is a test bench for variational inference of a Gaussian mixture model.
 
 Note: Needs to be extended to work for more than two dimensions
 """
-import settings as sg
+import generatedata as gd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
@@ -239,11 +239,11 @@ ylb = -2
 yub = 2
 
 # List with component-wise samples
-all_data = sg.sample(80)
+all_data = gd.sample(80)
 
 # Optional: A representative smaller sample (for visualization)
 if subsample:
-    data, component_data = sg.balanced_subsampling(all_data, xlb, xub, ylb, yub)
+    data, component_data = gd.balanced_subsampling(all_data, xlb, xub, ylb, yub)
 else:
     data = np.concatenate(all_data, 0)
 
@@ -264,8 +264,8 @@ plt.contourf(gX, gY, pdf, 20, cmap=cmap)
 
 plt.scatter(data[:, 0], data[:, 1], 12, c=color_sample)
 
-for k in range(sg.mu.shape[0]):
-    draw_cov_ellipse(sg.W[k, :, :], sg.mu[k, :], sg.mixture_coeff[k], color_sample, 8)
+for k in range(gd.mu.shape[0]):
+    draw_cov_ellipse(gd.W[k, :, :], gd.mu[k, :], gd.mixture_coeff[k], color_sample, 8)
 
 for k in range(Ck.shape[0]):
     draw_cov_ellipse(Ck[k, :, :], mk[k, :], p[k], color_estimated, 8)
