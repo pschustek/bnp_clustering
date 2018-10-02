@@ -31,7 +31,7 @@ def inference_vgmm(X, num_comp, sigma, nu0=200, beta0=1, alpha0=1):
             They will effectively get pruned if they are not useful to capture the data.
         sigma:
             Used to define isotropic prior distribution over the precision matrix
-        nu:
+        nu0:
             Degree of freedom parameter of the Wishart prior distribution over the precision matrix
         beta0:
             Scaling parameter of the precision parameter of the Gaussian prior distribution over the component means
